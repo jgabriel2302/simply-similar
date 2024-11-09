@@ -95,7 +95,7 @@
       padding: 1em;
       border-radius: 0.3em;
       max-width: calc(100% - 2em);
-      min-width: 30em;
+      min-width: 300px;
       min-height: 20em;
       max-height: 20em;
       overflow: auto;
@@ -167,6 +167,57 @@
     background: #00000007;
     padding: 0.3em 0.5em;
     border-radius: 0.3em;
+}
+@media (max-width: 768px) {
+  header {
+    height: auto;
+    padding: 0.5em;
+    font-size: 0.9em;
+    border-radius: 20px;
+  }
+
+  .btn {
+    height: 35px;
+    font-size: 0.9em;
+  }
+
+  pre {
+    min-width: 100%;
+    min-height: 15em;
+  }
+
+  #result {
+    min-width: 100%;
+    font-size: smaller;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 1em;
+  }
+
+  header {
+    font-size: 0.8em;
+    padding: 0.5em;
+    border-radius: 15px;
+  }
+
+  .btn {
+    height: 30px;
+    font-size: 0.8em;
+  }
+
+  pre {
+    font-size: 0.9em;
+    min-width: 100%;
+    min-height: 10em;
+  }
+
+  #result {
+    font-size: 0.8em;
+    min-width: 100%;
+  }
 }
     </style>
 </head>
