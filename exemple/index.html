@@ -251,8 +251,8 @@ print(similarity)
         	const result = document.querySelector('#result');
           result.innerHTML = '';
           try {
-          	const coderun = new Function(`${editor.value()}`)
-            coderun();
+          	const coderun = new Function("CountVectorizer", `${editor.value()}`)
+            coderun(CountVectorizer);
           } catch(err) {
             print("Error:")
           	print(err)
