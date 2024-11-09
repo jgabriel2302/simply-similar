@@ -272,6 +272,8 @@ print(similarity)
         const input = code.querySelector('#code-content');
         const output = code.querySelector('#code-pretty-content');
         const render = ()=>{
+		input.style.height = '0px';
+          	input.style.width = '0px'
         	const cursorPos = Math.max(input.selectionStart, input.selectionEnd)
 					const inputString = String(input.value);
         	const value = [inputString.slice(0, cursorPos), '\u9999', inputString.slice(cursorPos)].join('').split(/\n|\r/);
@@ -289,8 +291,8 @@ print(similarity)
               return `<span class='cursor'></span>`
               })}</div>`;
           }
-          input.style.height = output.getBoundingClientRect().height + 'px';
-          input.style.width = output.getBoundingClientRect().width + 'px';
+          input.style.height = code.scrollHeight + 'px';
+          input.style.width = code.scrollWidth + 'px'
         }
         render();
         input.addEventListener('input', render);
