@@ -241,11 +241,11 @@ let X = vectorizer.fit_transform([texto1, texto2])
 
 //Lista de unigrams e bigrams
 let feature_names = vectorizer.feature_names
-print(feature_names)
+//print(feature_names)
 
 //Resultado
 let similarity = vectorizer.similarity()
-print(similarity)
+print((similarity.result * 100).toFixed(2)+"%")
             </textarea>
           </pre>
           <div>
