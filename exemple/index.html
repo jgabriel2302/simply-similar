@@ -248,24 +248,23 @@ print(similarity)
           reset: ()=>{input.value=""; render()}
         }
       }
-      (function(){
-        const editor = initcode();
-        const clear = document.querySelector('#clear');
-        const run = document.querySelector('#run');
-        clear.addEventListener('click', ()=>editor.reset());
-        run.addEventListener('click', ()=>{
-        	const result = document.querySelector('#result');
-          result.innerHTML = '';
-          try {
-          	const coderun = new Function("CountVectorizer", `${editor.value()}`)
-            coderun(CountVectorizer);
-          } catch(err) {
-            print("Error:")
-          	print(err)
-          }
-        	
-        });
-      })()
+	(function(cv){
+	        const editor = initcode();
+	        const clear = document.querySelector('#clear');
+	        const run = document.querySelector('#run');
+	        clear.addEventListener('click', ()=>editor.reset());
+	        run.addEventListener('click', ()=>{
+		        const result = document.querySelector('#result');
+		        result.innerHTML = '';
+		        try {
+				const coderun = new Function("CountVectorizer", `${editor.value()}`)
+				coderun(cv);
+		        } catch(err) {
+				print("Error:")
+				print(err)
+		  	}
+		});
+	})(CountVectorizer)
     </script>
 </body>
 </html>
