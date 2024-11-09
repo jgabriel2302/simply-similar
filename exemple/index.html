@@ -257,8 +257,11 @@ print(similarity)
 		        const result = document.querySelector('#result');
 		        result.innerHTML = '';
 		        try {
-				const coderun = new Function("CountVectorizer", `${editor.value()}`)
-				coderun(CountVectorizer);
+				const coderun = new Function(`
+    					${CountVectorizer.toString()}
+    					${editor.value()}
+	 			`)
+				coderun();
 		        } catch(err) {
 				print("Error:")
 				print(err)
