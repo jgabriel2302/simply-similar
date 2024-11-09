@@ -1,9 +1,9 @@
 /* ##############################################################################
-####									Simply Similar in Javascript												####
-####		Simply Similar is an CountVectorizer algorithm in Javascript			####
-####						created by João Gabriel Corrêa da Silva										####
+####			Simply Similar in Javascript				####
+####		Simply Similar is an CountVectorizer algorithm in Javascript	####
+####		created by João Gabriel Corrêa da Silva				####
 ####	https://www.linkedin.com/in/jo%C3%A3o-gabriel-corr%C3%AAa-da-silva/	####
-############################################################################## */
+   ############################################################################## */
 
 class CountVectorizer {
   #ngram_range = [1, 2]
@@ -58,7 +58,7 @@ class CountVectorizer {
   }
   
   get feature_names(){
-  	this.#feature_names
+  	return this.#feature_names
   }
 
   multiply(m1 = [], m2 = []) {
