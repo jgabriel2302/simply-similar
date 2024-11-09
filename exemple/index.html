@@ -211,7 +211,7 @@ print(similarity)
     <script async defer src='../CountVectorizer.js'></script>
     <script>
     	function print(jsonbject){
-      	const content = JSON.stringify(jsonbject);
+      	const content = JSON.stringify(jsonbject, null, 2);
         console.log(content);
         const result = document.querySelector('#result');
         result.innerHTML += `<div>${content}</div>`;
