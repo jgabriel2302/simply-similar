@@ -159,7 +159,8 @@
 	    padding: 0.5em;
 	    margin: 0.3em;
 	    border-radius: 0.3em;
-	    font-size: small;
+	    font-size: small;max-width: calc(100% - 1em);
+	    min-width: 30em;
 	}
 #result div {
     margin: 0.3em;
@@ -214,7 +215,7 @@ print(similarity)
       	const content = JSON.stringify(jsonbject, null, 2);
         console.log(content);
         const result = document.querySelector('#result');
-        result.innerHTML += `<div>${content}</div>`;
+        result.innerHTML += `<div>${content.replace(/\n|\r/, '<br />')}</div>`;
       }
       function initcode(){
       	const code = document.querySelector('#code');
