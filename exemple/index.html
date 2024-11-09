@@ -208,7 +208,7 @@ print(similarity)
           <a class='btn' href='https://www.linkedin.com/in/jo%C3%A3o-gabriel-corr%C3%AAa-da-silva/'><span>in</span></a>
         </section>
     </article>
-    <script async src='../CountVectorizer.js'></script>
+    <script async defer src='../CountVectorizer.js'></script>
     <script>
     	function print(jsonbject){
       	const content = JSON.stringify(jsonbject);
@@ -248,7 +248,7 @@ print(similarity)
           reset: ()=>{input.value=""; render()}
         }
       }
-	(function(cv){
+	(function(){
 	        const editor = initcode();
 	        const clear = document.querySelector('#clear');
 	        const run = document.querySelector('#run');
@@ -258,13 +258,13 @@ print(similarity)
 		        result.innerHTML = '';
 		        try {
 				const coderun = new Function("CountVectorizer", `${editor.value()}`)
-				coderun(cv);
+				coderun(CountVectorizer);
 		        } catch(err) {
 				print("Error:")
 				print(err)
 		  	}
 		});
-	})(CountVectorizer)
+	})()
     </script>
 </body>
 </html>
