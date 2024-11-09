@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Primary Meta Tags -->
+    <title>Simply Similiar in Javascript</title>
+    <meta name="title" content="Simply Similiar in Javascript">
+    <meta name="description" content="Simply Similar is an CountVectorizer algorithm in Javascript created by João Gabriel Corrêa da Silva">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Simply Similiar in Javascript">
+    <meta property="og:description" content="Simply Similar is an CountVectorizer algorithm in Javascript created by João Gabriel Corrêa da Silva">
+    <meta property="og:image" content="">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Simply Similiar in Javascript">
+    <meta property="twitter:description" content="Simply Similar is an CountVectorizer algorithm in Javascript created by João Gabriel Corrêa da Silva">
+    <meta property="twitter:image" content="">
+    <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow:hidden;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-family: 'Gilroy', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eee;
+    }
+    header {
+      background-color: #ffde59;
+      background-image: linear-gradient(to right, #ffde59, #fbac50);
+      border-radius: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items:center;
+      font-weight: bold;
+      padding: 0.1em 1em;
+      margin: 1em 0.1em;
+    }
+    .btn {
+      border-radius: 5px;
+      height: 40px;
+      min-width: 40px;
+      display: inline-flex;
+      justify-content: center;
+      align-items:center;
+      text-decoration: none!important;
+      color: #fbac50!important;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      outline: none;
+    }
+    .btn > * {
+      z-index: 1;
+    }
+    .btn::before {
+      content: " ";
+      position: absolute;
+      width: calc(100% - 2px);
+      height: calc(100% - 2px);
+      border-radius: 5px;
+      background-image: linear-gradient(to right, #ffde59, #fbac50);
+      z-index: 0;
+      transform: translate(0, 105%);
+      transition: transform cubic-bezier(0.865, -0.600, 0.320, 1.605) 0.3s;
+    }
+    .btn.danger {
+      color: #fe4c4c!important;
+    }
+    .btn.success {
+      color: #4caf50!important;
+    }
+    .btn.danger::before {
+      background-image: linear-gradient(to right, #ffde59, #fe4c4c);
+    }
+    .btn.success::before {
+      background-image: linear-gradient(to right, #ffde59, #4caf50);
+    }
+    .btn:hover {
+      color: white!important;
+      transition: all cubic-bezier(0.865, -0.600, 0.320, 1.605) 0.3s;
+    }
+    .btn:hover::before {
+      transform: translate(0, 0);
+    }
+    pre {
+      border: 2px #444 solid;
+      background-color: #444;
+      color: #fff;
+      padding: 1em;
+      border-radius: 0.3em;
+      max-width: calc(100% - 2em);
+      min-width: 30em;
+      min-height: 20em;
+      max-height: 20em;
+      overflow: auto;
+      position: relative;
+    }
+    pre .pretty {
+
+    }
+    pre .pretty .row {
+      height: 20px;
+      /* line-height: 20px; */
+      word-spacing: 2px;
+      font-size: 12px;
+    }
+    pre .pretty .comment {
+      color: #888;
+    }
+    pre .pretty .const {
+      color: #1d87da;
+      font-weight: bold;
+    }
+    pre .pretty .number {
+      color: #ff8964;
+    }
+    pre .pretty .string {
+      color: #fe4c4c;
+    }
+    @keyframes cursor {
+      0% { opacity: 0 }
+      100% { opacity: 1 }
+    }
+    pre .pretty .cursor {
+      width: 1px;
+      background-color: white;
+      height: 15px;
+      position: absolute;
+      animation: cursor 1s infinite;
+    }
+    pre textarea {
+      line-height: 20px;
+      word-spacing: 2px;
+      font-size: 12px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #0000;
+      border: none;
+      outline: none;
+      color: #0000;
+      resize: none;
+      overflow: visible;
+      padding: 1em;
+      margin-top: calc(1em + 4px);
+      width: calc(100% - 2em);
+      height: calc(100% - 2em);
+    }
+    #result {
+      border: 2px #eee solid;
+      background-color: #eee;
+      color: #444;
+      padding: 1em;
+      margin: 0.3em;
+      border-radius: 0.3em;
+    }
+    </style>
+</head>
+<body>
+    <article>
+        <header>Simply Similiar in Javascript</header>
+        <section name="instructions">
+          
+        </section>
+        <section name="code">
+          <pre id="code">
+            <div class='pretty' id="code-pretty-content"></div>
+            <textarea spellcheck="false" id="code-content">
+//Textos de exemplo
+const texto1 = "Darth Vader has one of the best arcs in pop culture."
+const texto2 = "One of the best arcs in cinema is Darth Vader's."
+
+//Tokenização em unigrams e bigrams
+let vectorizer = new CountVectorizer([1, 2])
+let X = vectorizer.fit_transform([texto1, texto2])
+
+//Lista de unigrams e bigrams
+let feature_names = vectorizer.feature_names
+print(feature_names)
+
+//Resultado
+let similarity = vector.similarity()
+print(similarity)
+            </textarea>
+          </pre>
+          <div>
+            <button type="button" id="clear" class="btn danger"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22ZM8.96965 8.96967C9.26254 8.67678 9.73742 8.67678 10.0303 8.96967L12 10.9394L13.9696 8.96969C14.2625 8.6768 14.7374 8.6768 15.0303 8.96969C15.3232 9.26258 15.3232 9.73746 15.0303 10.0303L13.0606 12L15.0303 13.9697C15.3232 14.2625 15.3232 14.7374 15.0303 15.0303C14.7374 15.3232 14.2625 15.3232 13.9696 15.0303L12 13.0607L10.0303 15.0303C9.73744 15.3232 9.26256 15.3232 8.96967 15.0303C8.67678 14.7374 8.67678 14.2626 8.96967 13.9697L10.9393 12L8.96965 10.0303C8.67676 9.73744 8.67676 9.26256 8.96965 8.96967Z" fill="currentColor"></path> </g></svg></button>
+            <button type="button" id="run" class="btn success"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.4086 9.35258C23.5305 10.5065 23.5305 13.4935 21.4086 14.6474L8.59662 21.6145C6.53435 22.736 4 21.2763 4 18.9671L4 5.0329C4 2.72368 6.53435 1.26402 8.59661 2.38548L21.4086 9.35258Z" fill="currentColor"></path> </g></svg></button>
+          </div>
+          <div id="result">
+          
+          </div>
+        </section>
+        <section name="links">
+          <a class='btn' href='https://www.linkedin.com/in/jo%C3%A3o-gabriel-corr%C3%AAa-da-silva/'><span>in</span></a>
+        </section>
+    </article>
+    <script src='../CountVectorizer.js'></script>
+    <script>
+    	function print(jsonbject){
+      	const content = JSON.stringify(jsonbject);
+        console.log(content);
+        const result = document.querySelector('#result');
+        result.innerHTML += `<div>${content}</div>`;
+      }
+      function initcode(){
+      	const code = document.querySelector('#code');
+        const input = code.querySelector('#code-content');
+        const output = code.querySelector('#code-pretty-content');
+        const render = ()=>{
+        	const cursorPos = Math.max(input.selectionStart, input.selectionEnd)
+					const inputString = String(input.value);
+        	const value = [inputString.slice(0, cursorPos), '\u9999', inputString.slice(cursorPos)].join('').split(/\n|\r/);
+					output.innerHTML = '';
+          for(const row of value){
+          	output.innerHTML += `<div class='row'>${row.replace(/\/\/(.*)$/gm, (m, word)=>{
+              	return `<i class='comment'>${m}</i>`
+              }).replace(/\s?const|let|new\s/gm,  (m, word)=>{
+              	return `<span class='const'>${m}</span>`
+              }).replace(/\W(\d+)\W/gm,  (m, word)=>{
+              	return m.replace(word, `<span class='number'>${word}</span>`)
+              }).replace(/"(.+)"/gm,(m, word)=>{
+              return `<span class='string'>${m}</span>`
+              }).replace(/\u9999/gm,(m, word)=>{
+              return `<span class='cursor'></span>`
+              })}</div>`;
+          }
+          input.style.height = code.scrollHeight + 'px';
+        }
+        render();
+        input.addEventListener('input', render);
+        input.addEventListener('mouseup', render);
+        return {
+        	value: ()=>input.value,
+          reset: ()=>{input.value=""; render()}
+        }
+      }
+      (function(){
+        const editor = initcode();
+        const clear = document.querySelector('#clear');
+        const run = document.querySelector('#run');
+        clear.addEventListener('click', ()=>editor.reset());
+        run.addEventListener('click', ()=>{
+        	const result = document.querySelector('#result');
+          result.innerHTML = '';
+          try {
+          	const coderun = new Function(`${editor.value()}`)
+            coderun();
+          } catch(err) {
+            print("Error:")
+          	print(err)
+          }
+        	
+        });
+      })()
+    </script>
+</body>
+</html>
