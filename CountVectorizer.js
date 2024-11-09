@@ -17,7 +17,6 @@ class CountVectorizer {
   #token_matrix = []
 
   constructor(ngram_range = [1, 2], splitter = /\W/, glue = " ") {
-  	console.clear();
     this.#ngram_range = this.#sortArray(ngram_range)
     this.#splitter = splitter
     this.#glue = glue
