@@ -215,7 +215,7 @@ print(similarity)
       	const content = JSON.stringify(jsonbject, null, 2);
         console.log(content);
         const result = document.querySelector('#result');
-        result.innerHTML += `<div>${content.replace(/\n|\r/, '<br />')}</div>`;
+        result.innerHTML += `<div>${content.replace(/\n|\r/gmi, '<br />')}</div>`;
       }
       function initcode(){
       	const code = document.querySelector('#code');
