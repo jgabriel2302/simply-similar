@@ -289,8 +289,8 @@ print(similarity)
               return `<span class='cursor'></span>`
               })}</div>`;
           }
-          input.style.height = code.scrollHeight + 'px';
-          input.style.width = code.scrollWidth + 'px';
+          input.style.height = output.getBoundingClientRect().height + 'px';
+          input.style.width = output.getBoundingClientRect().width + 'px';
         }
         render();
         input.addEventListener('input', render);
