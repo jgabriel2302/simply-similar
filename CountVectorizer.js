@@ -82,7 +82,7 @@ class CountVectorizer {
         const words = sources[index]
           .split(this.#splitter)
           .filter((s) => s.length > 1) //pegando palavras com mais de um caracter	
-          .map(s=>this.#normalizeEncode? w.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""): s.toLowerCase())
+          .map(s=>this.#normalizeEncode? s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""): s.toLowerCase())
         let grams = []
         for (const ngramsize of this.#ngram_range) {
           grams = grams.concat(
