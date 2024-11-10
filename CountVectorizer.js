@@ -8,6 +8,7 @@
 class CountVectorizer {
   #ngram_range = [1, 2]
   #splitter = /\W/
+  #normalizeEncode = true
   #glue = " "
   #sources = []
   #sources_matrix = []
@@ -16,10 +17,11 @@ class CountVectorizer {
   #feature_names = []
   #token_matrix = []
 
-  constructor(ngram_range = [1, 2], splitter = /\W/, glue = " ") {
+  constructor(ngram_range = [1, 2], splitter = /\W/, glue = " ", normalizeEncode = true) {
     this.#ngram_range = this.#sortArray(ngram_range)
     this.#splitter = splitter
     this.#glue = glue
+    this.#normalizeEncode = normalizeEncode
     this.#sources = []
   }
 
@@ -79,8 +81,8 @@ class CountVectorizer {
       .map((_i, index) => {
         const words = sources[index]
           .split(this.#splitter)
-          .filter((s) => s.length > 1) //pegando palavras com mais de um caracter
-          .map(s=>s.toLowerCase())
+          .filter((s) => s.length > 1) //pegando palavras com mais de um caracter	
+          .map(s=>this.#normalizeEncode? w.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""): s.toLowerCase())
         let grams = []
         for (const ngramsize of this.#ngram_range) {
           grams = grams.concat(
