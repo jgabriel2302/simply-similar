@@ -79,10 +79,10 @@ class CountVectorizer {
     this.#sources_matrix = new Array(sources.length)
       .fill([])
       .map((_i, index) => {
-        const words = sources[index]
+        const words = (this.#normalizeEncode? sources[index].normalize('NFD').replace(/[\u0300-\u036f]/g, ""): sources[index])
           .split(this.#splitter)
           .filter((s) => s.length > 1) //pegando palavras com mais de um caracter	
-          .map(s=>this.#normalizeEncode? s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""): s.toLowerCase())
+          .map(s=>s.toLowerCase())
         let grams = []
         for (const ngramsize of this.#ngram_range) {
           grams = grams.concat(
